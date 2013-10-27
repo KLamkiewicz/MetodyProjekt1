@@ -64,6 +64,7 @@ public class Matrix {
 	
 
 	
+	
 	// dopisana funkcja - jarek
 	
 	public static double[][] swapMatrixcolumn(final double[][] m,final int i, final double[] column){
@@ -77,22 +78,6 @@ public class Matrix {
 		
 		return temp;
 		
-	}
-	
-	public static double[][] swapMatrixcolumn(final double[][] m,final int i,final double[] column){
-		int n=m.length;
-
-		double[][] temp=new double[n][n];
-		
-		for(int k=0;k<n;k++)
-			for(int j=0;j<n;j++)
-				temp[k][j]=m[k][j];
-				
-				
-		for(int p=0;p<n;p++){
-			temp[p][i]=column[p];
-		}
-		return temp;
 	}
 
 
