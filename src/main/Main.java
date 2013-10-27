@@ -132,6 +132,7 @@ public class Main {
 		}
 	}
 	
+	System.out.println();
 	System.out.println("======================================================="); 
 	/*
 	 * Wypisanie pochodnej wielomianu P(x)
@@ -157,6 +158,7 @@ public class Main {
 		}
 	}
 	
+	System.out.println();
 	System.out.println("======================================================="); 
 	/*
 	 * Obliczenie calki z P(x)
