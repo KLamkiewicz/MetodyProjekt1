@@ -154,6 +154,8 @@ public class DataManipulation {
 					for (int k = 0; k <= i; k++) {
 						if (temp[k] == temp[j]&&k!=j) {
 							q = false;  // ktorys wezel jest taki sam jak inny to q=false
+							k=i;
+							j=i;
 						}
 					}
 				}
