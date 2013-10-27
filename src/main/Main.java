@@ -95,21 +95,17 @@ public class Main {
 	}
 	
 	
-	System.out.println("======================================================="); 
-	System.out.println("Macierz a0:");
-	double[][] matrixA0=swapMatrixcolumn(m,0,b);
-	printMatrix(matrixA0);
-	System.out.println();
-	System.out.println("ma wyznacznik=" + det(matrixA0) +"\n");
+
+	for(int i=0; i<2*n+2; i++){
+		System.out.println("======================================================="); 
+		System.out.println("Macierz : A" +i );
+		double[][] matrix = swapMatrixcolumn(m, i, b);
+		printMatrix(matrix);
+		System.out.println();
+		System.out.println("ma wyznacznik=" + det(matrix) +"\n");
+	}
 	
 
-	System.out.println("======================================================="); 
-	System.out.println("Macierz a1:");
-	double[][] matrixA1=swapMatrixcolumn(m,1,b);
-	printMatrix(matrixA1);
-	System.out.println();
-	System.out.println("ma wyznacznik=" + det(matrixA1) +"\n");
-	
 	
 	}
 	
