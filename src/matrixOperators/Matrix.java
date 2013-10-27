@@ -88,11 +88,6 @@ public class Matrix {
 	
 	
 	
-	
-	
-	
-	
-	
 	public static void printMatrix(double[][] m) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < m.length; i++) {
