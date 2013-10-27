@@ -28,15 +28,10 @@ public class Main {
 		
 		for (int i = 0; i <= n; i++) {
 			z[i] = data.getInputz().get(i);
-		}
-		
-		for (int i = 0; i <= n; i++) {
 			y[i] = data.getInputy().get(i);
-		}
-		
-		for (int i = 0; i <= n; i++) {
 			x[i] = data.getInputx().get(i);
 		}
+
 		//KONIEC konwersji
 		
 		double[][] m =new double[2*n+2][2*n+2];  //glowna macierz
@@ -94,18 +89,91 @@ public class Main {
 		System.out.println("["+b[p]+"]");
 	}
 	
-	
 
+	/*
+	 * Wypisanie wyznacznikow macierzy posrednich
+	 */
+	double[] detP = new double[2*n+2];
 	for(int i=0; i<2*n+2; i++){
 		System.out.println("======================================================="); 
 		System.out.println("Macierz : A" +i );
 		double[][] matrix = swapMatrixcolumn(m, i, b);
 		printMatrix(matrix);
 		System.out.println();
-		System.out.println("ma wyznacznik=" + det(matrix) +"\n");
+		detP[i] = det(matrix);
+		System.out.println("ma wyznacznik=" + detP[i] +"\n");
 	}
 	
-
+	System.out.println("======================================================="); 
+	/*
+	 * Wypisanie wspolczynnikow
+	 */
+	double[] wsp = new double[2*n+2];
+	for(int i=0; i<2*n+2; i++){
+		wsp[i] = (detP[i]/detm);
+		System.out.println("Wspolczynnik A"+i+" wynosi: "+wsp[i] );
+	}
+	
+	System.out.println("======================================================="); 
+	/*
+	 * Wypisanie wielomianu P(x)
+	 */
+	System.out.println();
+	System.out.print("P(x)= ");
+	for(int i=0; i<2*n+2; i++){
+		if(i==0)
+			System.out.print(wsp[i]);
+		else{
+			if(wsp[i]<0)
+				System.out.print(" " + wsp[i]+"x^"+i);
+			else{
+				System.out.print(" + " + wsp[i]+"x^"+i);
+			}
+		}
+	}
+	
+	System.out.println("======================================================="); 
+	/*
+	 * Wypisanie pochodnej wielomianu P(x)
+	 */
+	System.out.println();
+	System.out.print("P'(x)= ");
+	for(int i=0; i<2*n+2; i++){
+		if(i!=0){
+			if(i==1){
+				if(wsp[i]<0)
+					System.out.print(" " + wsp[i]);
+				else{
+					System.out.print(wsp[i]);
+				}
+			}
+			else{
+				if(wsp[i]<0)
+					System.out.print(" " + wsp[i]*i+"x^"+(i-1));
+				else{
+					System.out.print(" + " + wsp[i]*i+"x^"+(i-1));
+				}
+			}
+		}
+	}
+	
+	System.out.println("======================================================="); 
+	/*
+	 * Obliczenie calki z P(x)
+	 */
+	System.out.println();
+	System.out.print("Calka P'(x)= ");
+	for(int i=0;i<2*n+2; i++){
+		if(i==0){
+			System.out.print(wsp[i]+"x ");
+		}else{
+			if(wsp[i]<0)
+				System.out.print(" "+(wsp[i]/(i+1))+"x^"+(i+1) );
+			else
+				System.out.print(" + " + (wsp[i]/(i+1))+"x^"+(i+1));
+		}
+	}
+	
 	
 	}
 	
