@@ -5,23 +5,50 @@ import static polynomialOperators.Polynomial.generatePolynomials;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import customExceptions.InputException;
 import polynomialOperators.DataManipulation;
 import polynomialOperators.Polynomial;
 import static matrixOperators.Matrix.*;
+
 
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, InputException {
 		
 		DataManipulation data = new DataManipulation();
+		boolean picked = false;
 		
-		data.readDataFromFile(); // wczytuje dane wejœciowe do arry List obiektu Data
-
-		
+			System.out.println("Wybierz sposob wprowadzania danych: ");
+			System.out.println("1 - Wczytaj z pliku");
+			System.out.println("2 - Wczytaj z konsoli");
+			
+			// wczytuje dane wejœciowe do arry List obiektu Data
+			Scanner sc = new Scanner(System.in);
+			do{
+			switch (sc.next()) {
+				case "1":
+					data.readDataFromFile();
+					picked = true;
+					break;
+				case "2":
+					data.readDataFromInput();
+					picked = true;
+				default:
+					if(!picked){
+						System.out.println("Podales nieprawidlowe dane wejsciowe, sprobuj jeszcze raz.");
+						System.out.println("Wybierz sposob wprowadzania danych: ");
+						System.out.println("1 - Wczytaj z pliku");
+						System.out.println("2 - Wczytaj z konsoli");
+					}
+					break;
+				}
+			}while(!picked);
+			
 		// konwersja Array List do tablicy ( wyci¹gam wartoœci z Array List z obiektu data )
-		int n = data.getInputx().size() - 1;
 		
+		int n = data.getInputx().size() - 1;
 		double[] z = new double[n + 1];
 		double[] y = new double[n + 1];
 		double[] x = new double[n + 1];
@@ -97,7 +124,7 @@ public class Main {
 	for(int i=0; i<2*n+2; i++){
 		System.out.println("======================================================="); 
 		System.out.println("Macierz : A" +i );
-		double[][] matrix = swapMatrixcolumn(m, i, b);
+		double[][] matrix = swapMatrixColumn(m, i, b);
 		printMatrix(matrix);
 		System.out.println();
 		detP[i] = det(matrix);
@@ -164,7 +191,7 @@ public class Main {
 	 * Obliczenie calki z P(x)
 	 */
 	System.out.println();
-	System.out.print("Calka P'(x)= ");
+	System.out.print("Calka P(x)= ");
 	for(int i=0;i<2*n+2; i++){
 		if(i==0){
 			System.out.print(wsp[i]+"x ");

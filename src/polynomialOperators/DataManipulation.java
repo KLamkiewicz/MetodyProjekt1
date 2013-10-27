@@ -3,6 +3,7 @@ package polynomialOperators;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -102,12 +103,7 @@ public class DataManipulation {
 				this.inputz.add(Double.parseDouble(s));
 			}
 			
-			
-			
-			
-
 			sc.close();
-
 		}
 
 		else {
@@ -115,6 +111,88 @@ public class DataManipulation {
 			sc.close();
 			throw new InputException();
 		}
+	}
+	
+	public void readDataFromInput(){
+		int liczbaWezlow = 0;
+		String check;
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Podaj liczbe wezlow jakie chcesz wprowadzic: ");
+		
+		do{
+			check = sc.next();
+			if(!isInteger(check)){
+				System.out.println("Podaj poprawne dane!");
+			}
+			else if(isInteger(check)){
+				if(Integer.parseInt(check)<=0){
+					check = "s";
+					System.out.println("Ta liczba jest zbyt mala! Podaj wieksza liczbe");
+				}
+			}
+		}while(!isInteger(check));
+		liczbaWezlow = Integer.parseInt(check);
+
+		/*
+		 * Wczytywanie x'ow
+		 */
+		System.out.println("Wprowadz " + liczbaWezlow + " wezly x");
+		for(int i=0; i<liczbaWezlow; i++){
+			do{
+				check = sc.next();
+				if(!isDouble(check)){
+					System.out.println("Podaj poprawne dane!");
+				}
+			}while(!isDouble(check));
+			inputx.add(Double.parseDouble(check));
+		}
+		
+		/*
+		 * Wczytywanie y'ow
+		 */
+		System.out.println("Wprowadz " + liczbaWezlow + " wezly y");
+		for(int i=0; i<liczbaWezlow; i++){
+			do{
+				check = sc.next();
+				if(!isDouble(check)){
+					System.out.println("Podaj poprawne dane!");
+				}
+			}while(!isDouble(check));
+			inputy.add(Double.parseDouble(check));
+		}
+		
+		/*
+		 * Wczytywanie z'ow
+		 */
+		System.out.println("Wprowadz " + liczbaWezlow + " wezly z");
+		for(int i=0; i<liczbaWezlow; i++){
+			do{
+				check = sc.next();
+				if(!isDouble(check)){
+					System.out.println("Podaj poprawne dane!");
+				}
+			}while(!isDouble(check));
+			inputz.add(Double.parseDouble(check));
+		}
+	}
+	
+	public static boolean isInteger(String s) {
+	    try { 
+	        Integer.parseInt(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    }
+	    return true;
+	}
+
+	public static boolean isDouble(String s) {
+	    try { 
+	        Double.parseDouble(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    }
+	    return true;
 	}
 
 }

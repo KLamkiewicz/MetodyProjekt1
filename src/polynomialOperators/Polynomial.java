@@ -13,10 +13,6 @@ public class Polynomial {
 	private int y;
 	private int[] a;
 
-	
-	
-	
-	
 	public double[] getRatios() {
 		return ratios;
 	}
@@ -97,9 +93,7 @@ public class Polynomial {
 			ratios[i] = pow(x, i-1)*i;  // pozostale wspolczynniki niezerowe wg. wzoru na pochodn¹ potêgi
 		}
 		
-		
 	}
-	
 
 	public void printPolynomial() {
 
