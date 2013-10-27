@@ -109,6 +109,8 @@ public class Main {
 	printMatrix(matrixA1);
 	System.out.println();
 	System.out.println("ma wyznacznik=" + det(matrixA1) +"\n");
+	
+	
 	}
-
+	
 }

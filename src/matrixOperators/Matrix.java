@@ -13,7 +13,7 @@ public class Matrix {
 	 *            Matrix
 	 * @return determinant
 	 */
-	public static double det(double[][] m) {
+	public static double det(final double[][] m) {
 		int n = m.length;
 		if (n == 1) { // jeœli macierz ma rozmiar 1 na 1 zwróæ wyznacznik jako
 						// element macierzy , jednoczeœnie to gwarantuje
@@ -66,7 +66,7 @@ public class Matrix {
 	
 	// dopisana funkcja - jarek
 	
-	public static double[][] swapMatrixcolumn(double[][] m,final int i,final double[] column){
+	public static double[][] swapMatrixcolumn(final double[][] m,final int i, final double[] column){
 		int n=m.length;
 		double[][] temp=m;
 		
@@ -79,14 +79,25 @@ public class Matrix {
 		
 	}
 	
+	public static double[][] swapMatrixcolumn(final double[][] m,final int i,final double[] column){
+		int n=m.length;
+
+		double[][] temp=new double[n][n];
+		
+		for(int k=0;k<n;k++)
+			for(int j=0;j<n;j++)
+				temp[k][j]=m[k][j];
+				
+				
+		for(int p=0;p<n;p++){
+			temp[p][i]=column[p];
+		}
+		return temp;
+	}
+
+
 	
-	
-	
-	
-	
-	
-	
-	public static void printMatrix(double[][] m) {
+	public static void printMatrix(final double[][] m) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < m.length; i++) {
 			double[] row = m[i];
