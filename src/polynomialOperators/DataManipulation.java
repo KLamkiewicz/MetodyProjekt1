@@ -117,7 +117,7 @@ public class DataManipulation {
 		int liczbaWezlow = 0;
 		String check;
 		Scanner sc = new Scanner(System.in);
-
+		boolean q;
 		System.out.println("Podaj liczbe wezlow jakie chcesz wprowadzic: ");
 		
 		do{
@@ -137,14 +137,32 @@ public class DataManipulation {
 		/*
 		 * Wczytywanie x'ow
 		 */
+		double temp[]=new double[liczbaWezlow]; // pomocnicza tablica podanych juz wezlow x
 		System.out.println("Wprowadz " + liczbaWezlow + " wezly x");
 		for(int i=0; i<liczbaWezlow; i++){
 			do{
+				q=true;
 				check = sc.next();
+				temp[i]=Double.parseDouble(check);
 				if(!isDouble(check)){
 					System.out.println("Podaj poprawne dane!");
 				}
-			}while(!isDouble(check));
+				
+				//petla ktora przeleatuje po tablicy i porównuje kazdy element z kazdym 
+				if(i>=1){ // jesli podales wiecej niz 1 element
+				for (int j = 0; j <= i; j++) {
+					for (int k = 0; k <= i; k++) {
+						if (temp[k] == temp[j]&&k!=j) {
+							q = false;  // ktorys wezel jest taki sam jak inny to q=false
+						}
+					}
+				}
+				}
+				if(i>=1&&!q){ //jesli podales wiecej niz 1 wezel i nie sa one rozne
+					System.out.println("Podaj unikalne wêz³y!");
+					System.out.println("Wprowadz inny wezel x");
+				}
+			}while(!isDouble(check)||!q);
 			inputx.add(Double.parseDouble(check));
 		}
 		
