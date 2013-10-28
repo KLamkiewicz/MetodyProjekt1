@@ -137,36 +137,26 @@ public class DataManipulation {
 		/*
 		 * Wczytywanie x'ow
 		 */
-		double temp[]=new double[liczbaWezlow]; // pomocnicza tablica podanych juz wezlow x
-		System.out.println("Wprowadz " + liczbaWezlow + " wezly x");
-		for(int i=0; i<liczbaWezlow; i++){
-			do{
-				q=true;
-				check = sc.next();
-				temp[i]=Double.parseDouble(check);
-				if(!isDouble(check)){
-					System.out.println("Podaj poprawne dane!");
-				}
-				
-				//petla ktora przeleatuje po tablicy i porównuje kazdy element z kazdym 
-				if(i>=1){ // jesli podales wiecej niz 1 element
-				for (int j = 0; j <= i; j++) {
-					for (int k = 0; k <= i; k++) {
-						if (temp[k] == temp[j]&&k!=j) {
-							q = false;  // ktorys wezel jest taki sam jak inny to q=false
-							k=i;
-							j=i;
-						}
-					}
-				}
-				}
-				if(i>=1&&!q){ //jesli podales wiecej niz 1 wezel i nie sa one rozne
-					System.out.println("Podaj unikalne wêz³y!");
-					System.out.println("Wprowadz inny wezel x");
-				}
-			}while(!isDouble(check)||!q);
-			inputx.add(Double.parseDouble(check));
-		}
+        System.out.println("Wprowadz " + liczbaWezlow + " wezly x");
+        for(int i=0; i<liczbaWezlow; i++){
+                do{
+                        check = sc.next();
+                        if(!isDouble(check))
+                                System.out.println("Podaj poprawne dane!");
+                        else{
+                        	if(!inputx.isEmpty()){
+                        		if(inputx.contains(Double.parseDouble(check))){
+                        			System.out.println("Taki wezel juz istnieje!");
+                        			check = "s";
+                        		}
+                        		else
+                                    inputx.add(Double.parseDouble(check));
+                        	}
+                        	else
+                                inputx.add(Double.parseDouble(check));
+                        }
+                }while(!isDouble(check));
+        }
 		
 		/*
 		 * Wczytywanie y'ow
