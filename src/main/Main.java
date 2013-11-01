@@ -88,7 +88,7 @@ public class Main {
 		//koniec przepisania
 		detm=det(m);
 		
-		
+if(detm!=0){
 		//przepisanie wartosci do wektora kolumnowego.
 		int counter=0;
 		for(int p=0;p<n+1;p++){
@@ -205,5 +205,8 @@ public class Main {
 	
 	
 	}
+else
+	System.out.println("Wyznacznik = 0 , BRAK ROZWI¥ZANIA !!!!");
+}
 	
 }
